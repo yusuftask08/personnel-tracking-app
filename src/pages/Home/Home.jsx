@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import "./Home.sass";
 
 /** Store */
-import { getEmloyees } from "../../store/slices/dataSlice";
+import { getEmployees } from "../../store/slices/dataSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { voteForEmployee } from "../../store/slices/voteSlice";
 
@@ -15,7 +15,7 @@ const Home = () => {
   const data = useSelector((state) => state.data.data);
 
   useEffect(() => {
-    dispatch(getEmloyees());
+    dispatch(getEmployees());
   }, [dispatch]);
 
   return (

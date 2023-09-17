@@ -9,7 +9,7 @@ import Button from "../Button/Button";
 
 const EmployeeCard = (props) => {
   const { name, id, address, image, email, job, telephone, vote } =
-    props.employee;
+    props?.employee;
   const [voteCount, setVoteCount] = useState(vote);
   const [increaseloading, setIncreaseLoading] = useState(false);
   const [decreaseloading, setDecreaseLoading] = useState(false);
@@ -43,7 +43,7 @@ const EmployeeCard = (props) => {
   };
 
   return (
-    <div className="employee-card">
+    <div className={`employee-card ${props.className ? props.className : ""}`}>
       <Link to={`/employee/${id}`} key={id}>
         <img className="employee-card-image" src={image} alt="Employee-Image" />
       </Link>
@@ -54,20 +54,24 @@ const EmployeeCard = (props) => {
         <div className="employee-card-telephone"> {telephone} </div>
         <div className="employee-card-address"> {address} </div>
         <div className="employee-card-vote"> &#9733; {vote} </div>
-        <Button
-          className={`employee-card-vote-increase-button`}
-          disabled={increaseloading}
-          onClick={() => handleVote("increase")}
-          loading={increaseloading}
-          text="+"
-        />
-        <Button
-          className={`employee-card-vote-decrease-button`}
-          disabled={decreaseloading}
-          onClick={() => handleVote("decrease")}
-          loading={decreaseloading}
-          text="-"
-        />
+        {props.voteForEmployee && (
+          <>
+            <Button
+              className={`employee-card-vote-increase-button`}
+              disabled={increaseloading}
+              onClick={() => handleVote("increase")}
+              loading={increaseloading}
+              text="+"
+            />
+            <Button
+              className={`employee-card-vote-decrease-button`}
+              disabled={decreaseloading}
+              onClick={() => handleVote("decrease")}
+              loading={decreaseloading}
+              text="-"
+            />
+          </>
+        )}
       </div>
     </div>
   );

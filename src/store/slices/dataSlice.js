@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetcher } from "../../api/fetcher";
 
-export const getEmloyees = createAsyncThunk("data/fetchData", async () => {
+export const getEmployees = createAsyncThunk("data/fetchData", async () => {
   try {
-    const response = await fetcher("employess");
+    const response = await fetcher(`employess`);
     return response;
   } catch (error) {
     throw error;
@@ -13,23 +13,22 @@ export const getEmloyees = createAsyncThunk("data/fetchData", async () => {
 const dataSlice = createSlice({
   name: "data",
   initialState: {
-    data: [],
     loading: false,
     error: null,
-    data: null,
+    data: [],
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getEmloyees.pending, (state) => {
+      .addCase(getEmployees.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(getEmloyees.fulfilled, (state, action) => {
+      .addCase(getEmployees.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
       })
-      .addCase(getEmloyees.rejected, (state, action) => {
+      .addCase(getEmployees.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

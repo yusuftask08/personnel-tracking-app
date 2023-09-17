@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetcher } from "../../api/fetcher";
-import { getEmloyees } from "../../store/slices/dataSlice";
+import { getEmployees } from "../../store/slices/dataSlice";
 
 export const voteForEmployee = createAsyncThunk(
   "vote/voteForEmployee",
@@ -10,7 +10,7 @@ export const voteForEmployee = createAsyncThunk(
       await fetcher(`employess/${id}`, "PUT", "", {
         vote: newVoteCount,
       });
-      dispatch(getEmloyees());
+      dispatch(getEmployees());
     } catch (error) {
       throw error;
     }
@@ -23,7 +23,6 @@ const voteSlice = createSlice({
     data: [],
     loading: false,
     error: null,
-    data: null,
   },
   reducers: {},
   extraReducers: (builder) => {
