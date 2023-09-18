@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import dataReducer from "./slices/dataSlice";
 import voteReducer from "./slices/voteSlice";
 import employeeReducer from "./slices/employeeSlice";
-import { loadState, saveState } from "./storage"; 
+import { loadState, saveState } from "./storage";
 import userInteractionLogger from "./middleware";
 
 const initialState = loadState();
@@ -13,8 +13,9 @@ export const store = configureStore({
     vote: voteReducer,
     employee: employeeReducer,
   },
-  preloadedState: initialState, 
-  middleware: [userInteractionLogger],
+  preloadedState: initialState,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(userInteractionLogger),
 });
 
 store.subscribe(() => {

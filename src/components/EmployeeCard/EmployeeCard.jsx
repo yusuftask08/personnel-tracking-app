@@ -50,9 +50,13 @@ const EmployeeCard = (props) => {
       <div className="employee-card-info">
         <div className="employee-card-name">{name}</div>
         <div className="employee-card-job">{job}</div>
-        <div className="employee-card-email"> {email} </div>
-        <div className="employee-card-telephone"> {telephone} </div>
-        <div className="employee-card-address"> {address} </div>
+        {!props.voteForEmployee && (
+          <>
+            <div className="employee-card-email"> {email} </div>
+            <div className="employee-card-telephone"> {telephone} </div>
+            <div className="employee-card-address"> {address} </div>
+          </>
+        )}
         <div className="employee-card-vote"> &#9733; {vote} </div>
         {props.voteForEmployee && (
           <>
