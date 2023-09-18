@@ -1,8 +1,31 @@
-# React + Vite
+# Personnel Tracking App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bu uygulama, çalışanları oylamak ve bu oylamalara göre sıralamak amacıyla oluşturulmuş bir web uygulamasıdır.
 
-Currently, two official plugins are available:
+## Used technologies
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Bu uygulama aşağıdaki teknolojileri kullanır:
+
+- React
+- Vite
+- Redux Toolkit
+- Sass
+- Prop-types
+
+## DEMO
+[Vercel](personnel-tracking-app.vercel.app) 
+
+## Installation
+
+Uygulamayı yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyin:
+
+1. Projeyi bilgisayarınıza klonlayın:
+
+   ```bash
+   git clone https://github.com/yusuftask08/personnel-tracking-app
+
+   cd personnel-tracking-app
+
+   yarn || npm install
+
+   yarn dev || npm run dev
